@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+
+        .green{
+            background-color: green;
+        }
+
+    </style>
+</head>
+<body>
+    <button onclick="setarAtributo()">Ola</button>
+    <button onclick="toogleClass()">trocar</button>
+    <script>
+        function setarAtributo(){
+          let bt = document.getElementsByTagName('button')[0]
+          bt.setAttribute('class','red')
+        }
+
+        function toogleClass(){
+            let bt = document.getElementsByTagName('button')[1]
+            let at = bt.getAttribute('class')
+           /* console.log(at)
+            bt.setAttribute('class','red')
+            at = bt.getAttribute('class')
+            console.log(at)*/
+            if(at == 'red')
+               bt.setAttribute('class','green')
+            else  
+              bt.setAttribute('class','red')
+        }
+    </script>
+</body>
+</html>
