@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="cep">Informe cep</label>
+    <input type="text" id="cep">
+    <label for="logradouro">Informe logradouro</label>
+    <input type="text" id="logradouro">
+
+    <button onclick="lerDom()">Ler dom</button>
+    <script>
+        function lerDom(){
+            /*pega um unico registro pelo id*/
+           let inputCep = document.getElementById("cep")
+           console.log(inputCep)  
+           inputCep.value = "89107-000"
+
+           /*pega todos os input*/
+           let inputs = document.getElementsByTagName('input')
+           console.log(inputs)
+           console.log(inputs[0])
+           console.log(inputs[1])
+        }
+    </script>
+</body>
+</html>
