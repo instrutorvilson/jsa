@@ -1,0 +1,14 @@
+{
+  "name": "jsa-api",
+  "version": "1.0.0",
+  "description": "Api para curso Javascript Avançado",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
