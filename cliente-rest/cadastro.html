@@ -30,20 +30,26 @@
         </div>
     </div>
     <script>
-        function salvar() {
+       async function salvar() {
             const obj = {
                 nome: document.getElementById('nome').value,
                 email: document.getElementById('email').value,
                 fone: document.getElementById('fone').value
             }
-            fetch('http://localhost:3000/contatos', {
+            /*fetch('http://localhost:3000/contatos', {
                 method: "POST",
                 body: JSON.stringify(obj),
                 headers: { "Content-type": "application/json; charset=UTF-8" }
             })
             .then(response => {
                 location.href = 'index.html'
+            })*/
+            await fetch('http://localhost:3000/contatos', {
+                method: "POST",
+                body: JSON.stringify(obj),
+                headers: { "Content-type": "application/json; charset=UTF-8" }
             })
+            location.href = 'index.html'
         }
     </script>
 </body>

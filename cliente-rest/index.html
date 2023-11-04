@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de contatos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
+
 <body onload="loadData()">
     <header>
         <nav>
-            <a href="Cadastro">Cadastro</a>
+            <a href="cadastro.html">Cadastro</a>
         </nav>
     </header>
     <main>
@@ -29,13 +32,44 @@
         </table>
     </main>
     <script>
-        function loadData(){
-           fetch('http://localhost:3000/contatos')
-           .then(response => response.json())
-           .then(data => {
-               let linhas = ''
-               for(const ct of data){
-                linhas += `<tr>
+        async function loadData() {
+            /*  fetch('http://localhost:3000/contatos')
+              .then(response => response.json())
+              .then(data => {
+                  show(data)
+              })*/
+            try {
+                const response = await fetch('http://localhost:3000/contatos')
+                const dados = await response.json()
+                show(dados)
+            }
+            catch(error){
+                console.log(error.message)
+            }
+           
+        }
+
+      async  function excluir(item) {
+           /* fetch(`http://localhost:3000/contatos/${item}`, {
+                method: "DELETE"
+            })
+                .then(response => {
+                    location.href = 'index.html'
+                })*/
+            try{
+                await fetch(`http://localhost:3000/contatos/${item}`, { method: "DELETE"  })
+                location.href = 'index.html'
+            }
+            catch(error){
+                console.log(error.message)
+            }
+            
+        }
+
+        function show(dados){
+            let linhas = ''
+                for (const ct of dados) {
+                    linhas += `<tr>
                     <td>${ct.id}</td>
                     <td>${ct.nome}</td>
                     <td>${ct.email}</td>
@@ -45,19 +79,10 @@
                         <a href='#' onclick='excluir(${ct.id})'>Excluir</a>
                     </td>
                     </tr>`
-               }
-               document.getElementsByTagName('tbody')[0].innerHTML = linhas
-           })
-        }
-
-        function excluir(item){
-            fetch(`http://localhost:3000/contatos/${item}`, {
-                method: "DELETE"            
-            })
-            .then(response => {
-                location.href = 'index.html'
-            })
+                }
+                document.getElementsByTagName('tbody')[0].innerHTML = linhas
         }
     </script>
 </body>
+
 </html>
