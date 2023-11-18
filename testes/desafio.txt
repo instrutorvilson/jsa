@@ -1,0 +1,2 @@
+->Criar uma função que recebe uma idade e retorna se a pessoa é maior ou menor de idade. Criar teste unitário para verificar se a funcionalidade está correta.
+
